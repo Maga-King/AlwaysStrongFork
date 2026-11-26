@@ -178,7 +178,7 @@ elif [ -x "$MODPATH/keybox_fetch.sh" ]; then
     net_ok() {
         bounded 4 ping -c1 -W2 1.1.1.1 >/dev/null 2>&1 && return 0
         bounded 4 ping -c1 -W2 8.8.8.8 >/dev/null 2>&1 && return 0
-        _h=$(echo "${KEYBOX_BASE_URL:-http://evoker.qzz.io}" | sed -e 's#^[a-z]*://##' -e 's#/.*##' -e 's#:.*##')
+        _h=$(echo "${KEYBOX_URL:-${KEYBOX_BASE_URL:-https://raw.githubusercontent.com/Yurii0307/yurikey/main}}" | sed -e 's#^[a-z]*://##' -e 's#/.*##' -e 's#:.*##')
         [ -n "$BB" ] && bounded 5 "$BB" nslookup "$_h" >/dev/null 2>&1 && return 0
         return 1
     }

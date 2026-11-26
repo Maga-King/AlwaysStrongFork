@@ -84,8 +84,8 @@ TSOSS_ASSET_DEFAULT="Tricky-Store-OSS-v3.1.0-172-41383f5-Release.zip"
 # keystore2. It uses its own /data/adb/teesim/config.json layout, so attest/
 # teesim.sh bridges the AlwaysStrong keybox + target list into it. Only used with
 # --engine teesim. Pinned here; --teesim / --teesim-file override. 64-bit only.
-TEESIM_TAG_DEFAULT="canary-71"
-TEESIM_ASSET_DEFAULT="TEESimulator-v4.0-71-17be1f0-Release.zip"
+TEESIM_TAG_DEFAULT="canary-76"
+TEESIM_ASSET_DEFAULT="TEESimulator-v4.0-76-06f9f2e-Release.zip"
 
 TEE_TAG="$TEE_TAG_DEFAULT"
 TEE_ASSET="$TEE_ASSET_DEFAULT"

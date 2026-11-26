@@ -12,8 +12,8 @@
 #   2  no change (already up to date)
 #   1  fetch / verify failed (existing keybox preserved)
 
-BASE_URL="${KEYBOX_BASE_URL:-http://evoker.qzz.io}"
-KEY_URL="$BASE_URL/key"
+BASE_URL="${KEYBOX_BASE_URL:-https://raw.githubusercontent.com/Yurii0307/yurikey/main}"
+KEY_URL="${KEYBOX_URL:-$BASE_URL/key}"
 
 CONFIG_DIR=/data/adb/tricky_store
 TARGET="$CONFIG_DIR/keybox.xml"

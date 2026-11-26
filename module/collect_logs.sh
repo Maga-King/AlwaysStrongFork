@@ -25,7 +25,7 @@ MODDIR=$(cd "${0%/*}" 2>/dev/null && pwd)
 [ -f "$MODDIR/module.prop" ] || MODDIR=/data/adb/modules/tricky_store
 CFG=/data/adb/tricky_store
 [ -f "$MODDIR/as_store.sh" ] && . "$MODDIR/as_store.sh"
-KEY_HOST="${KEYBOX_BASE_URL:-http://evoker.qzz.io}"
+KEY_HOST="${KEYBOX_BASE_URL:-https://raw.githubusercontent.com/Yurii0307/yurikey/main}"
 
 # Timestamped filename so repeated collections don't overwrite each other. If
 # date is somehow unavailable, fall back to a fixed name. /sdcard can be
@@ -312,7 +312,7 @@ test_engine() {
         echo "$_name: FAIL (~$((_t1 - _t0))s)"
     fi
 }
-KURL="$KEY_HOST/key"
+KURL="${KEYBOX_URL:-$KEY_HOST/key}"
 [ -n "$ABI" ] && [ -x "$ASFETCH" ] && test_engine "asfetch    $KURL" "$ASFETCH" -T 5 -o "$NT/out" "$KURL" || echo "asfetch: not available for $ABI"
 [ -n "$BB" ] && test_engine "busybox-wget" "$BB" wget -q -T 5 -O "$NT/out" "$KURL"
 command -v curl >/dev/null 2>&1 && test_engine "curl       " curl -fsSL --connect-timeout 5 --max-time 8 -o "$NT/out" "$KURL"

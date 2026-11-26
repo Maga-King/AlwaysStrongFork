@@ -10,7 +10,7 @@
 # Called from action.sh (every press) and service.sh (hourly + first boot).
 # Idempotent: only rewrites module.prop if the prefix actually changed.
 
-URL="${STATUS_URL:-http://evoker.qzz.io/status}"
+URL="${STATUS_URL:-}"
 MODPATH="${MODPATH:-/data/adb/modules/tricky_store}"
 PROP="$MODPATH/module.prop"
 BASE_FILE="$MODPATH/description.txt"
@@ -109,11 +109,21 @@ get_status() {
     return 1
 }
 
-new=$(get_status)
-[ -z "$new" ] && exit 3
-# A captive portal / hotel Wi-Fi answers every URL with an HTML login page. That
-# is not a status — never stamp it into module.prop.
-case "$new" in *'<'*|*'>'*|*'{'*) exit 3 ;; esac
+if [ -n "$URL" ]; then
+    new=$(get_status)
+    [ -z "$new" ] && exit 3
+    # A captive portal / hotel Wi-Fi answers every URL with an HTML login page. That
+    # is not a status — never stamp it into module.prop.
+    case "$new" in *'<'*|*'>'*|*'{'*) exit 3 ;; esac
+else
+    # No remote status endpoint configured (e.g. yurikey repo serves only /key):
+    # avoid stalling on a dead mirror and reflect local keybox presence instead.
+    if [ -s "$CONFIG_DIR/keybox.xml" ] && head -c 4096 "$CONFIG_DIR/keybox.xml" | grep -q "Keybox"; then
+        new="🟢🟢🟢"
+    else
+        exit 0
+    fi
+fi
 
 base=$(head -1 "$BASE_FILE" | tr -d '\r\n')
 [ -z "$base" ] && exit 4

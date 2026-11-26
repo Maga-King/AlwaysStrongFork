@@ -1,7 +1,7 @@
 # AlwaysStrong — advanced: optional engines, building, repo layout
 
 Everything on this page is optional. The three release zips on the
-[Releases](https://github.com/evoker0/AlwaysStrong/releases/latest) page are what
+[Releases](https://github.com/Maga-King/AlwaysStrongFork/releases/latest) page are what
 almost everyone should install — see **Which build to download** in the
 [README](../README.md).
 
@@ -14,23 +14,23 @@ attached to releases** — they live in the nightly builds:
 
 - **Nightly builds (direct download)** — every nightly run builds all nine zips,
   each as its own artifact. The **latest** build of any line is always at a
-  permanent [nightly.link](https://nightly.link/evoker0/AlwaysStrong/workflows/nightly/main)
+  permanent [nightly.link](https://nightly.link/Maga-King/AlwaysStrongFork/workflows/nightly/main)
   URL, no GitHub login needed:
 
   | Line | Latest nightly |
   |---|---|
-  | Default (PlayIntegrityFork + TEESimulator-RS) | [AlwaysStrong.zip](https://nightly.link/evoker0/AlwaysStrong/workflows/nightly/main/AlwaysStrong.zip) |
-  | inject + TEESimulator-RS | [AlwaysStrong-inject.zip](https://nightly.link/evoker0/AlwaysStrong/workflows/nightly/main/AlwaysStrong-inject.zip) |
-  | Lite + TEESimulator-RS | [AlwaysStrong-nopif.zip](https://nightly.link/evoker0/AlwaysStrong/workflows/nightly/main/AlwaysStrong-nopif.zip) |
-  | Fork + TrickyStoreOSS | [AlwaysStrong-TSOSS.zip](https://nightly.link/evoker0/AlwaysStrong/workflows/nightly/main/AlwaysStrong-TSOSS.zip) |
-  | inject + TrickyStoreOSS | [AlwaysStrong-inject-TSOSS.zip](https://nightly.link/evoker0/AlwaysStrong/workflows/nightly/main/AlwaysStrong-inject-TSOSS.zip) |
-  | Lite + TrickyStoreOSS | [AlwaysStrong-nopif-TSOSS.zip](https://nightly.link/evoker0/AlwaysStrong/workflows/nightly/main/AlwaysStrong-nopif-TSOSS.zip) |
-  | Fork + TEESimulator (JingMatrix) | [AlwaysStrong-TEESIM.zip](https://nightly.link/evoker0/AlwaysStrong/workflows/nightly/main/AlwaysStrong-TEESIM.zip) |
-  | inject + TEESimulator (JingMatrix) | [AlwaysStrong-inject-TEESIM.zip](https://nightly.link/evoker0/AlwaysStrong/workflows/nightly/main/AlwaysStrong-inject-TEESIM.zip) |
-  | Lite + TEESimulator (JingMatrix) | [AlwaysStrong-nopif-TEESIM.zip](https://nightly.link/evoker0/AlwaysStrong/workflows/nightly/main/AlwaysStrong-nopif-TEESIM.zip) |
+  | Default (PlayIntegrityFork + TEESimulator-RS) | [AlwaysStrong.zip](https://nightly.link/Maga-King/AlwaysStrongFork/workflows/nightly/main/AlwaysStrong.zip) |
+  | inject + TEESimulator-RS | [AlwaysStrong-inject.zip](https://nightly.link/Maga-King/AlwaysStrongFork/workflows/nightly/main/AlwaysStrong-inject.zip) |
+  | Lite + TEESimulator-RS | [AlwaysStrong-nopif.zip](https://nightly.link/Maga-King/AlwaysStrongFork/workflows/nightly/main/AlwaysStrong-nopif.zip) |
+  | Fork + TrickyStoreOSS | [AlwaysStrong-TSOSS.zip](https://nightly.link/Maga-King/AlwaysStrongFork/workflows/nightly/main/AlwaysStrong-TSOSS.zip) |
+  | inject + TrickyStoreOSS | [AlwaysStrong-inject-TSOSS.zip](https://nightly.link/Maga-King/AlwaysStrongFork/workflows/nightly/main/AlwaysStrong-inject-TSOSS.zip) |
+  | Lite + TrickyStoreOSS | [AlwaysStrong-nopif-TSOSS.zip](https://nightly.link/Maga-King/AlwaysStrongFork/workflows/nightly/main/AlwaysStrong-nopif-TSOSS.zip) |
+  | Fork + TEESimulator (JingMatrix) | [AlwaysStrong-TEESIM.zip](https://nightly.link/Maga-King/AlwaysStrongFork/workflows/nightly/main/AlwaysStrong-TEESIM.zip) |
+  | inject + TEESimulator (JingMatrix) | [AlwaysStrong-inject-TEESIM.zip](https://nightly.link/Maga-King/AlwaysStrongFork/workflows/nightly/main/AlwaysStrong-inject-TEESIM.zip) |
+  | Lite + TEESimulator (JingMatrix) | [AlwaysStrong-nopif-TEESIM.zip](https://nightly.link/Maga-King/AlwaysStrongFork/workflows/nightly/main/AlwaysStrong-nopif-TEESIM.zip) |
 
  The same artifacts are on the
-  [Actions tab](https://github.com/evoker0/AlwaysStrong/actions/workflows/nightly.yml)
+  [Actions tab](https://github.com/Maga-King/AlwaysStrongFork/actions/workflows/nightly.yml)
   under the latest run (GitHub login required there). Nightlies are untested
   snapshots of `main`, built by every push that changes something a zip is made
   of (`module/`, `module-variants/`, `attest/`, `native/`, `build.sh`) and kept

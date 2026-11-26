@@ -9,11 +9,11 @@ name: Nightly
 #
 # Every variant is its own artifact with a STABLE (version-less) name, so the
 # latest build of any line has a permanent direct link via nightly.link:
-#   https://nightly.link/evoker0/AlwaysStrong/workflows/nightly/main            (all nine)
-#   https://nightly.link/evoker0/AlwaysStrong/workflows/nightly/main/AlwaysStrong-TSOSS.zip
+#   https://nightly.link/Maga-King/AlwaysStrongFork/workflows/nightly/main            (all nine)
+#   https://nightly.link/Maga-King/AlwaysStrongFork/workflows/nightly/main/AlwaysStrong-TSOSS.zip
 # The artifact IS the flashable module zip (contents are uploaded unpacked).
 # or from the run's "Artifacts" section (Actions tab), or:
-#   gh run download -R evoker0/AlwaysStrong --name AlwaysStrong-TSOSS
+#   gh run download -R Maga-King/AlwaysStrongFork --name AlwaysStrong-TSOSS
 #
 # Its module.prop reads `version=v1.0.4 (411-06f040e-nightly)` - the release
 # version plus the <commits>-<sha>-<buildtype> tag the rest of the TrickyStore

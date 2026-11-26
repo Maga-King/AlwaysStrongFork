@@ -269,7 +269,7 @@ section[hidden]{display:none}
     <section id="pgMain">
       <div class="grp"><div class="card statusbar">
         <span class="sk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2 20 3"/><path d="m17 6 2 2"/><path d="m14.5 8.5 2 2"/></svg></span>
-        <span class="lab"><span data-i="status">Keybox status</span><small>evokerrkey36</small></span>
+        <span class="lab"><span data-i="status">Keybox status</span><small>yurikey</small></span>
         <span class="sp"></span>
         <span class="checks" title="Basic · Device · Strong, all pass"><svg class="vico pass" viewBox="0 0 48 48" fill="currentColor"><path fill-rule="evenodd" d="M21.05,33.1 L35.2,18.95l-2.3,-2.25 -11.85,11.85 -6,-6 -2.25,2.25ZM24,44q-4.1,0 -7.75,-1.575 -3.65,-1.575 -6.375,-4.3 -2.725,-2.725 -4.3,-6.375Q4,28.1 4,24q0,-4.15 1.575,-7.8 1.575,-3.65 4.3,-6.35 2.725,-2.7 6.375,-4.275Q19.9,4 24,4q4.15,0 7.8,1.575 3.65,1.575 6.35,4.275 2.7,2.7 4.275,6.35Q44,19.85 44,24q0,4.1 -1.575,7.75 -1.575,3.65 -4.275,6.375t-6.35,4.3Q28.15,44 24,44Z"/></svg><svg class="vico pass" viewBox="0 0 48 48" fill="currentColor"><path fill-rule="evenodd" d="M21.05,33.1 L35.2,18.95l-2.3,-2.25 -11.85,11.85 -6,-6 -2.25,2.25ZM24,44q-4.1,0 -7.75,-1.575 -3.65,-1.575 -6.375,-4.3 -2.725,-2.725 -4.3,-6.375Q4,28.1 4,24q0,-4.15 1.575,-7.8 1.575,-3.65 4.3,-6.35 2.725,-2.7 6.375,-4.275Q19.9,4 24,4q4.15,0 7.8,1.575 3.65,1.575 6.35,4.275 2.7,2.7 4.275,6.35Q44,19.85 44,24q0,4.1 -1.575,7.75 -1.575,3.65 -4.275,6.375t-6.35,4.3Q28.15,44 24,44Z"/></svg><svg class="vico pass" viewBox="0 0 48 48" fill="currentColor"><path fill-rule="evenodd" d="M21.05,33.1 L35.2,18.95l-2.3,-2.25 -11.85,11.85 -6,-6 -2.25,2.25ZM24,44q-4.1,0 -7.75,-1.575 -3.65,-1.575 -6.375,-4.3 -2.725,-2.725 -4.3,-6.375Q4,28.1 4,24q0,-4.15 1.575,-7.8 1.575,-3.65 4.3,-6.35 2.725,-2.7 6.375,-4.275Q19.9,4 24,4q4.15,0 7.8,1.575 3.65,1.575 6.35,4.275 2.7,2.7 4.275,6.35Q44,19.85 44,24q0,4.1 -1.575,7.75 -1.575,3.65 -4.275,6.375t-6.35,4.3Q28.15,44 24,44Z"/></svg></span>
       </div></div>
@@ -282,7 +282,7 @@ section[hidden]{display:none}
         </div>
         <div class="row" data-k="keybox auto check">
           <div class="ic teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2 20 3"/><path d="m17 6 2 2"/><path d="m14.5 8.5 2 2"/></svg></div>
-          <div class="txt"><div class="h" data-i="kb_t">Keybox</div><div class="s">Auto check · evokerrkey36.xml</div></div>
+          <div class="txt"><div class="h" data-i="kb_t">Keybox</div><div class="s">Auto check · yurikey</div></div>
           <label class="sw"><input type="checkbox" checked><span class="sl"></span></label>
         </div>
         <div class="row" data-k="status indicator prefix">
@@ -669,20 +669,13 @@ section[hidden]{display:none}
     });
   }
 
-  // ---- auto keybox name from the server mirror (/meta.json), like v1.0.4 ----
-  // The status card shows WHICH keybox the server currently serves, independent
-  // of any custom keybox the user picked (the custom name shows in its own row).
-  // Fetched once; engines are tried in turn since no one downloader works on all.
+  // ---- auto keybox name from the installed keybox.xml DeviceID ----
+  // Yurikey's repo serves /key directly without a separate /meta.json, so read
+  // the DeviceID attribute (e.g. "Yurikey72") straight from keybox.xml.
   var metaKeyName="";
   function fetchMetaName(){
-    var U="http://evoker.qzz.io/meta.json";
-    var cmd='A=$(ls '+shq(MOD)+'/bin/*/asfetch 2>/dev/null | head -1); '
-      +'B=""; for b in /data/adb/magisk/busybox /data/adb/ksu/bin/busybox /data/adb/ap/bin/busybox; do [ -x "$b" ] && { B="$b"; break; }; done; '
-      +'O=""; [ -n "$A" ] && O=$("$A" -T 8 '+shq(U)+' 2>/dev/null); '
-      +'[ -z "$O" ] && [ -n "$B" ] && O=$("$B" wget -q -T 10 -O - '+shq(U)+' 2>/dev/null); '
-      +'[ -z "$O" ] && command -v curl >/dev/null 2>&1 && O=$(curl -fsSL --max-time 12 '+shq(U)+' 2>/dev/null); '
-      +'echo "$O" | grep -o \'"filename"[^,]*\' | head -1';
-    return ksuExec(cmd).then(function(r){ var m=(r.stdout||"").match(/"([^"]+)\.xml"/); return m?m[1]:""; });
+    var cmd='[ -s '+shq(KEYBOX)+' ] && head -c 4096 '+shq(KEYBOX)+' | sed -n \'s/.*DeviceID="\\([^". ]*\\).*/\\1/p\' | head -1';
+    return ksuExec(cmd).then(function(r){ return (r.stdout||"").trim() || "yurikey"; });
   }
   function applyMetaName(){
     if(!metaKeyName) return;
