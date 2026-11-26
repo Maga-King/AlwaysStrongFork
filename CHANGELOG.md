@@ -1,5 +1,16 @@
 # AlwaysStrong changelog
 
+## v1.0.6
+
+**Changed**
+- **Keybox source switched to `Yurii0307/yurikey`.** `keybox_fetch.sh`, `action.sh`, and `collect_logs.sh` now fetch the keybox from `https://raw.githubusercontent.com/Yurii0307/yurikey/main/key`.
+- **Local keybox metadata & status.** The WebUI reads the active keybox `DeviceID` directly from `keybox.xml` instead of querying the old mirror, and `status_fetch.sh` no longer stalls on the dead `/status` endpoint.
+- **Updated repository & update manifests.** Pointed `updateJson`, `update*.json`, and docs to `Maga-King/AlwaysStrongFork`.
+
+**Upstream**
+- Updated PlayIntegrityFork pin to `v19` (replacing the expired nightly.link CI artifact).
+- Updated TEESimulator (JingMatrix) pin to `canary-76`.
+
 ## v1.0.5
 
 **New**
